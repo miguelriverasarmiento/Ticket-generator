@@ -1,8 +1,10 @@
+import TicketFormPage from './components/ticketFormPage/TicketFormPage'
+
 function App() {
 
   return (
     <>
-      <h1>Ticket Generator</h1>
+      <TicketFormPage />
     </>
   )
 }
