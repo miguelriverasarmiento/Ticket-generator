@@ -10,11 +10,13 @@ function App() {
   return (
     
       <MainLayout>
-        {
-          context.showTicket
-          ? <ConfirmationPage />
-          : <TicketFormPage />
-        }
+        <main className='max-w-3xl mx-auto'>
+          {
+            context.showTicket
+            ? <ConfirmationPage />
+            : <TicketFormPage />
+          }
+        </main>
       </MainLayout>
   )
 }

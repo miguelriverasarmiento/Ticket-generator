@@ -4,6 +4,7 @@ import Button from "./Button"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { useShowTicket } from "../../hooks/useShowTicket"
 import { useUserStore } from "../../store/user"
+import { useState } from "react"
 
 type Inputs = {
   fullName: string;
@@ -12,6 +13,8 @@ type Inputs = {
 }
 
 const Form = () => {
+
+  const [imageUrl, setImageUrl] = useState<string>("");
 
   const { 
     register,
@@ -30,13 +33,24 @@ const Form = () => {
     userStore.setUser({
       fullName: fullName,
       email: email,
-      githubUser: githubUser
+      githubUser: githubUser,
+      url: imageUrl
     })
    }
 
+   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      console.log(file)
+      console.log(url)
+      setImageUrl(url);
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit(sendForm)}>
-        <UploadInput />
+        <UploadInput url={imageUrl} onChange={handleChange}/>
         <div className="flex flex-col gap-6">
           <TextInput 
             {...register("fullName", { required: "Full name is required" })} 
