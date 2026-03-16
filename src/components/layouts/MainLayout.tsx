@@ -33,7 +33,7 @@ const MainLayout = ({ children }: Props) => {
       {children}
 
       <img
-        src="public/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"
+        src="/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"
         alt="pattern squiggly line bottom mobile tablet"
         className="absolute bottom-0 left-0 h-[200px] pointer-events-none"
       />

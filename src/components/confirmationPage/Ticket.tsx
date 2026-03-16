@@ -1,4 +1,9 @@
+import { useUserStore } from "../../store/user"
+
 const Ticket = () => {
+
+    const store = useUserStore()
+    const { fullName, githubUser } = store;
   return (
     <div className="flex flex-col justify-between h-40 w-85.5 p-4 bg-[url(/assets/images/pattern-ticket.svg)] bg-contain bg-no-repeat relative">
         <div>
@@ -12,10 +17,10 @@ const Ticket = () => {
                 className="size-11.25 rounded-lg"    
             />
             <div>
-                <p className="text-xl font-medium">Jonathan Kirstof</p>
+                <p className="text-xl font-medium">{fullName}</p>
                 <div className="flex">
                     <img src="/assets/images/icon-github.svg" alt="icon github"/>
-                    <p>@jonathankirstof0101</p>
+                    <p>{githubUser}</p>
                 </div>
             </div>
         </div>

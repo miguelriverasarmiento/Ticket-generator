@@ -3,6 +3,7 @@ import TextInput from "./TextInput"
 import Button from "./Button"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { useShowTicket } from "../../hooks/useShowTicket"
+import { useUserStore } from "../../store/user"
 
 type Inputs = {
   fullName: string;
@@ -19,10 +20,18 @@ const Form = () => {
    } = useForm<Inputs>()
 
    const context = useShowTicket()
+   const userStore = useUserStore()
 
    const sendForm: SubmitHandler<Inputs> = (data: Inputs) => {
-    console.log(data)
+    
+    const { fullName, email, githubUser } = data
+    
     context.setShowTicket(true)
+    userStore.setUser({
+      fullName: fullName,
+      email: email,
+      githubUser: githubUser
+    })
    }
 
   return (
